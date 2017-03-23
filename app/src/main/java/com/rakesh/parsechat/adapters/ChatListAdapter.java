@@ -55,21 +55,26 @@ public class ChatListAdapter extends ArrayAdapter<Message> {
             holder.body.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
         }
         final ImageView profileView = isMe ? holder.imageMe : holder.imageOther;
-        Picasso.with(getContext()).load(getProfileUrl(message.getUserId())).into(profileView);
+        Picasso.with(getContext()).load(getProfileUrl(message.getUserId(), isMe)).into(profileView);
         holder.body.setText(message.getBody());
         return convertView;
     }
 
     // Create a gravatar image based on the hash value obtained from userId
-    private static String getProfileUrl(final String userId) {
+    private static String getProfileUrl(final String userId, boolean isMe) {
         String hex = "";
-        try {
-            final MessageDigest digest = MessageDigest.getInstance("MD5");
-            final byte[] hash = digest.digest(userId.getBytes());
-            final BigInteger bigInt = new BigInteger(hash);
-            hex = bigInt.abs().toString(16);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(isMe) {
+            hex = "67af57a8547180a427d2547c599d7887"; //hardcoded gravatar.
+        }
+        else {
+            try {
+                final MessageDigest digest = MessageDigest.getInstance("MD5");
+                final byte[] hash = digest.digest(userId.getBytes());
+                final BigInteger bigInt = new BigInteger(hash);
+                hex = bigInt.abs().toString(16);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return "http://www.gravatar.com/avatar/" + hex + "?d=identicon";
     }
