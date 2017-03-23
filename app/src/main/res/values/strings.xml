@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ParseChat</string>
+    <string name="send_text">Send</string>
+    <string name = "message_hint_text">Please enter text to send..</string>
+</resources>
