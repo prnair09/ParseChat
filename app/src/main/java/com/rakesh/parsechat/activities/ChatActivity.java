@@ -111,7 +111,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 message.setUserId(ParseUser.getCurrentUser().getObjectId());
                 message.setBody(messageText);
-
+                etMessage.setText("");
 
                 message.saveInBackground(new SaveCallback() {
                     @Override
