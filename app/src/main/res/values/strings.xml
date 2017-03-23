@@ -2,4 +2,8 @@
     <string name="app_name">ParseChat</string>
     <string name="send_text">Send</string>
     <string name = "message_hint_text">Please enter text to send..</string>
+    <string name="message_hint">Say something</string>
+    <string name="send">Send</string>
+    <string name="profile_other">My Profile Picture</string>
+    <string name="profile_me">Other\'s profile picture</string>
 </resources>
